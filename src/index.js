@@ -13,7 +13,7 @@ app.get('/stats/:region/:player', async (req, res) => {
     const player = req.params.player; // player name
     const final_url = `https://www.leagueofgraphs.com/summoner/${region}/${player}`;
     
-    const browser = await robo.launch(); // browser instance
+    const browser = await robo.launch({ args: ['--no-sandbox'] }); // browser instance
     const page = await browser.newPage(); // new page
 
     // useragent
