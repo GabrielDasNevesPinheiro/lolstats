@@ -14,7 +14,7 @@ async function server () {
 
         const region = req.params.region;
         const player = req.params.player; // player name
-        const final_url = `https://www.leagueofgraphs.com/summoner/${region}/${player}`;
+        const final_url = `https://www.leagueofgraphs.com/summoner/${parseServer(region)}/${player}`;
 
         const page = await browser.newPage(); // new page
 
@@ -53,6 +53,25 @@ async function server () {
     app.listen(port, () => {
         console.log("SERVER LISTENING ON " + port);
     });
+}
+
+function parseServer(server) {
+    switch(server) {
+        case 'en':
+            return 'eune';
+        case 'ew':
+            return 'euw';
+        case 'kr':
+            return 'ko';
+        case 'ln':
+            return 'lan';
+        case 'ls':
+            return 'las';
+        case 'oc':
+            return 'oce';
+        case 'jp':
+            return 'ja';
+    }
 }
 
 server();
