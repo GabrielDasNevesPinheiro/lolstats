@@ -20,7 +20,6 @@ app.get('/stats/:region/:player', async (req, res) => {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36');;
     
     await page.goto(final_url); // setting url
-    page.setDefaultNavigationTimeout(0); // timeout config
     //aguarde nossos dados antes de continuar
     await page.waitForSelector("#mainContent"); // wait this element
 
@@ -45,7 +44,7 @@ app.get('/stats/:region/:player', async (req, res) => {
     });
     
     res.status(200).send({stats: cap}); // sending response
-    page.close(); 
+    await page.close(); 
 });
 
 app.listen(port, () => {
