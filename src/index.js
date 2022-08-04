@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 80;
 
 async function server () {
-    const browser = await robo.launch({ args: ['--no-sandbox'], headless: false }); // browser instance
+    const browser = await robo.launch({ args: ['--no-sandbox'] }); // browser instance
 
     app.get('/stats/:region/:player', async (req, res) => {
 
