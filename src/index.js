@@ -14,6 +14,7 @@ async function server () {
 
         const region = req.params.region;
         const player = req.params.player; // player name
+        console.log(region);
         const final_url = `https://www.leagueofgraphs.com/summoner/${parseServer(region)}/${player}`;
 
         const page = await browser.newPage(); // new page
@@ -61,8 +62,6 @@ function parseServer(server) {
             return 'eune';
         case 'ew':
             return 'euw';
-        case 'kr':
-            return 'ko';
         case 'ln':
             return 'lan';
         case 'ls':
@@ -71,6 +70,8 @@ function parseServer(server) {
             return 'oce';
         case 'jp':
             return 'ja';
+        default:
+            return server;
     }
 }
 
