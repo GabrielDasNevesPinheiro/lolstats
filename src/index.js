@@ -14,7 +14,6 @@ async function server () {
 
         const region = req.params.region;
         const player = req.params.player; // player name
-        console.log(region);
         const final_url = `https://www.leagueofgraphs.com/summoner/${parseServer(region)}/${player}`;
 
         const page = await browser.newPage(); // new page
